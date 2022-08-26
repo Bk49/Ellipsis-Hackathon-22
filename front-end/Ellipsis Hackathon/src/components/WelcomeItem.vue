@@ -42,7 +42,7 @@ h3 {
 
 @media (min-width: 1024px) {
   .item {
-    margin-top: 0;
+    margin-top: 20;
     padding: 0.4rem 0 1rem calc(var(--section-gap) / 2);
   }
 
