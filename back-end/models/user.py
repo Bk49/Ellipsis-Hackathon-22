@@ -1,7 +1,9 @@
 from . import db, finance_request
 from flask import Response, request, jsonify
 from flask_restful import Resource
+from flask_bcrypt import Bcrypt
 
+bcrypt = Bcrypt()
 
 class User(db.Model):
 
@@ -9,7 +11,7 @@ class User(db.Model):
 
     id = db.Column(db.Integer, primary_key=True, unique=True)
     username = db.Column(db.String(50), nullable=False, unique=True)
-    password = db.Column(db.String(50), nullable=False)
+    password = db.Column(db.String(100), nullable=False)
     role = db.Column(db.String(50), nullable=False)
     loan_repayment_status = db.Column(db.String(50), nullable=False)
     finance_request = db.relationship("FinanceRequest", backref='user', lazy=True, cascade="all,delete")
@@ -26,7 +28,7 @@ class User(db.Model):
 class UserResource(Resource):
     def post(self):
         new_user = User(username=request.json["username"],
-                        password=request.json["password"],
+                        password=bcrypt.generate_password_hash(request.json["password"]),
                         role=request.json["role"],
                         loan_repayment_status="No outstanding loan")
         db.session.add(new_user)
@@ -72,6 +74,6 @@ class UserAuthenticate(Resource):
         if not retrieved_user:
             return Response("Invalid user", 404)
 
-        if password == retrieved_user.password:
+        if bcrypt.check_password_hash(retrieved_user.password, password):
             return Response("Success", 200)
         return Response("Incorrect password", 401)

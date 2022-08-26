@@ -1,9 +1,14 @@
 from flask import Flask
 from flask_restful import Resource, Api
 from models import db, user, finance_request, borrower, loan_request
+from flask_cors import CORS
+from flask_bcrypt import Bcrypt
+
 
 app = Flask(__name__)
 api = Api(app)
+CORS(app)
+bcrypt = Bcrypt(app)
 
 DB_USER = "root"
 DB_PASSWORD = ""
