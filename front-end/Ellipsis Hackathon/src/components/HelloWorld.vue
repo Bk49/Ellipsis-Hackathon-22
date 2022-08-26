@@ -18,6 +18,7 @@ defineProps({
         cupiditate neque quas!
       </template>
       <template #footer>
+
         <Button icon="pi pi-check" label="Save" />
         <Button
           icon="pi pi-times"
