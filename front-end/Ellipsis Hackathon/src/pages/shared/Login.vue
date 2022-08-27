@@ -1,11 +1,22 @@
 <script>
-// export default {
-//         username: '',
-//         password: ''
-//         data() {
-//             return {};
-//         }
-//     }
+export default {
+        methods: {
+            async authenticate() {
+                try {
+                    const requestOptions = {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ username: this.username, password: this.password })
+                    };
+                    let response = await fetch("http://127.0.0.1:5001/authenticate", requestOptions);
+                    console.log(response.status);
+
+                } catch (error) {
+                    console.log(error);
+                }
+            }
+        }
+    }
 </script>
 
 <template>

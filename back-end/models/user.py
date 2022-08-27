@@ -33,12 +33,18 @@ class UserResource(Resource):
                         loan_repayment_status="No outstanding loan")
         db.session.add(new_user)
         db.session.commit()
-        return Response("Success", 201)
+        return {
+                "status_code": 201,
+                "message": "Success"
+            }
 
 
     def get(self):
         users = User.query.all()
-        return jsonify([user.to_json() for user in users])
+        return {
+                "status_code": 200,
+                "users": [user.to_json() for user in users]
+            }
 
     def put(self):
         financing_company_id = request.json["id"]
@@ -46,23 +52,35 @@ class UserResource(Resource):
 
         financing_company = User.query.filter_by(id=financing_company_id).first()
         if not financing_company:
-            return Response("Invalid company ID", 404)
+            return {
+                "status_code": 404,
+                "message": "Invalid company ID"
+            }
 
 
         financing_company.loan_repayment_status = loan_repayment_status
         db.session.merge(financing_company)
         db.session.commit()
-        return Response("Success", 200)
+        return {
+                "status_code": 200,
+                "message": "Success"
+            }
 
     def delete(self):
         financing_company_id = request.json["id"]
         financing_company = User.query.filter_by(id=financing_company_id).first()
         if not financing_company:
-            return Response("Invalid company ID", 404)
+            return {
+                "status_code": 404,
+                "message": "Invalid company ID"
+            }
 
         db.session.delete(financing_company)
         db.session.commit()
-        return Response("Success", 200)
+        return {
+                "status_code": 200,
+                "message": "Success"
+            }
 
 
 class UserAuthenticate(Resource):
@@ -72,8 +90,17 @@ class UserAuthenticate(Resource):
         retrieved_user = User.query.filter_by(username=username).first()
 
         if not retrieved_user:
-            return Response("Invalid user", 404)
+            return {
+                "status_code": 404,
+                "message": "Invalid user"
+            }
 
         if bcrypt.check_password_hash(retrieved_user.password, password):
-            return Response("Success", 200)
-        return Response("Incorrect password", 401)
+            return {
+                "status_code": 200,
+                "role": retrieved_user.role
+            }
+        return {
+                "status_code": 401,
+                "message": "Incorrect password"
+            }
