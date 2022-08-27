@@ -27,11 +27,11 @@ class Borrower(db.Model):
 
 class BorrowerResource(Resource):
     def post(self):
-        new_user = User(name=request.json["name"],
+        new_borrower = Borrower(name=request.json["name"],
                         phone_number=request.json["phone_number"],
                         nric=request.json["nric"],
                         loan_repayment_status="No outstanding loan")
-        db.session.add(new_user)
+        db.session.add(new_borrower)
         db.session.commit()
         return Response("Success", 201)
 
@@ -44,22 +44,22 @@ class BorrowerResource(Resource):
         borrower_id = request.json["id"]
         loan_repayment_status = request.json["loan_repayment_status"]
 
-        borrower = Borrower.query.filter_by(id=borrower_id).first()
-        if not borrower:
+        current_borrower = Borrower.query.filter_by(id=borrower_id).first()
+        if not current_borrower:
             return Response("Invalid borrower ID", 404)
 
 
-        borrower.loan_repayment_status = loan_repayment_status
-        db.session.merge(borrower)
+        current_borrower.loan_repayment_status = loan_repayment_status
+        db.session.merge(current_borrower)
         db.session.commit()
         return Response("Success", 200)
 
     def delete(self):
         borrower_id = request.json["id"]
-        borrower = Borrower.query.filter_by(id=borrower_id).first()
-        if not borrower:
+        current_borrower = Borrower.query.filter_by(id=borrower_id).first()
+        if not current_borrower:
             return Response("Invalid borrower ID", 404)
 
-        db.session.delete(borrower)
+        db.session.delete(current_borrower)
         db.session.commit()
         return Response("Success", 200)

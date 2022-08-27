@@ -33,9 +33,9 @@ class LoanRequestResource(Resource):
         interest_rate = request.json["interest_rate"]
         house_valuation = request.json["house_valuation"]
 
-        borrower = borrower.Borrower.query.filter_by(id=borrower_id).first()
+        current_borrower = borrower.Borrower.query.filter_by(id=borrower_id).first()
 
-        if not borrower:
+        if not current_borrower:
             return Response("Invalid borrower ID", 404)
 
         new_loan_request = LoanRequest(borrower_id=borrower_id,
@@ -51,8 +51,8 @@ class LoanRequestResource(Resource):
         return Response("Success", 200)
 
     def get(self, borrower_id):
-        borrower = borrower.Borrower.query.filter_by(id=borrower_id)
-        if not borrower:
+        current_borrower = borrower.Borrower.query.filter_by(id=borrower_id)
+        if not current_borrower:
             return Response("Invalid borrower ID", 404)
 
         loan_requests = LoanRequest.query.filter_by(borrower_id=borrower_id).all()
@@ -63,8 +63,8 @@ class LoanRequestResource(Resource):
         status = request.json["status"]
         paid_amount = request.json["paid_amount"]
 
-        borrower = user.User.query.filter_by(id=borrower_id).first()
-        if not borrower:
+        current_borrower = user.User.query.filter_by(id=borrower_id).first()
+        if not current_borrower:
             return Response("Invalid borrower ID", 404)
 
         loan_request = LoanRequest.query.filter_by(id=loan_request_id).first()
@@ -80,7 +80,7 @@ class LoanRequestResource(Resource):
     def delete(self, borrower_id):
         loan_request_id = request.json["loan_request_id"]
 
-        borrower = borrower.Borrower.query.filter_by(id=borrower_id).first()
+        current_borrower = borrower.Borrower.query.filter_by(id=borrower_id).first()
         if not borrower:
             return Response("Invalid borrower ID", 404)
 
