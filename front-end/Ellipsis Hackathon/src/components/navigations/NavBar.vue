@@ -1,10 +1,10 @@
 <template>
-    <header class="navbaradmin">
+    <header class="navbar">
         <nav>
             <div class="branding">
                 <img src="../assets/logo.png" alt="">
             </div>
-            <ul v-show="admin" class="navigation">
+            <ul class="navigation">
                 <li><router-link to="/admin-overview-financing-request">
                     Overview Financing Request
                 </router-link></li>
@@ -34,3 +34,15 @@
         </nav>
     </header>
 </template>
+
+<style scoped>
+    header {
+        position: absolute;
+        z-index: 99;
+        nav {
+            display: flex;
+            flex-direction: row;
+            padding: 12px 0;
+        }
+    }
+</style>
