@@ -7,6 +7,7 @@ import ViewFinancingReq from "./pages/admin/ViewFinancingReq.vue";
 import CreateUpdateFinancingReq from "./pages/client/CreateUpdateFinancingReq.vue";
 import ClientListFinancingReq from "./pages/client/ClientListFinancingReq.vue";
 import ViewGSTools from "./pages/client/ViewGSTools.vue";
+import NavBar from "./components/navigations/NavBar.vue";
 
 const routes = [
     { path: "/", component: Login },
@@ -14,9 +15,10 @@ const routes = [
     { path: "/list-client", component: ListClient },
     { path: "/admin-overview-financing-request", component: AdminListFinancingReq },
     { path: "/view-financing-request", component: ViewFinancingReq },
-    { path: "/create-financiang-request", component: CreateUpdateFinancingReq },
+    { path: "/create-financing-request", component: CreateUpdateFinancingReq },
     { path: "/client-overview-financing-req", component: ClientListFinancingReq },
     { path: "/view-tools", component: ViewGSTools },
+    { path: "/nav-bar", component: NavBar },
 ];
 
 const router = createRouter({
