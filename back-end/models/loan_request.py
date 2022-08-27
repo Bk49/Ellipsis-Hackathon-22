@@ -33,9 +33,9 @@ class LoanRequestResource(Resource):
         interest_rate = request.json["interest_rate"]
         house_valuation = request.json["house_valuation"]
 
-        borrower = borrower.Borrower.query.filter_by(id=borrower_id).first()
+        current_borrower = borrower.Borrower.query.filter_by(id=borrower_id).first()
 
-        if not borrower:
+        if not current_borrower:
             return Response("Invalid borrower ID", 404)
 
         new_loan_request = LoanRequest(borrower_id=borrower_id,

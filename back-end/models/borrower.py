@@ -27,11 +27,11 @@ class Borrower(db.Model):
 
 class BorrowerResource(Resource):
     def post(self):
-        new_user = User(name=request.json["name"],
+        new_borrower = Borrower(name=request.json["name"],
                         phone_number=request.json["phone_number"],
                         nric=request.json["nric"],
                         loan_repayment_status="No outstanding loan")
-        db.session.add(new_user)
+        db.session.add(new_borrower)
         db.session.commit()
         return Response("Success", 201)
 
