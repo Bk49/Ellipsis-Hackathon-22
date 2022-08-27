@@ -1,10 +1,10 @@
 <template>
-    <header>
+    <header class="navbaradmin">
         <nav>
             <div class="branding">
                 <img src="../assets/logo.png" alt="">
             </div>
-            <ul class="navigation">
+            <ul v-show="admin" class="navigation">
                 <li><router-link to="/admin-overview-financing-request">
                     Overview Financing Request
                 </router-link></li>
@@ -16,6 +16,18 @@
                 </router-link></li>
                 <li><router-link to="/edit-client">
                     Edit Client List
+                </router-link></li>
+            </ul>
+
+            <ul v-show="client" class="navigation">
+                <li><router-link to="/view-tools">
+                    Goldman Sachs Tools
+                </router-link></li>
+                <li><router-link to="/client-overview-financing-req">
+                    View Financing Requests
+                </router-link></li>
+                <li><router-link to="/create-financing-request">
+                    Create Financing Request
                 </router-link></li>
             </ul>
 
