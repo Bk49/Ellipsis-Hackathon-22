@@ -6,7 +6,8 @@ import AdminListFinancingReq from "./pages/admin/AdminListFinancingReq.vue";
 import ViewFinancingReq from "./pages/admin/ViewFinancingReq.vue";
 import CreateUpdateFinancingReq from "./pages/client/CreateUpdateFinancingReq.vue";
 import ClientListFinancingReq from "./pages/client/ClientListFinancingReq.vue";
-import ViewGSTools from "./pages/client/ViewGSTools.vue";
+//import ViewGSTools from "./pages/client/ViewGSTools.vue";
+import ViewGSTools from "./components/table/BaseTable.vue";
 
 const routes = [
     { path: "/", component: Login },
