@@ -5,7 +5,7 @@
 <template>
     <div>
         <router-link to="/edit-client">
-            <Button label="Login"/>
+            <Button label="Login"></Button>
         </router-link>
         <div>
             <h5>Floating Label</h5>
