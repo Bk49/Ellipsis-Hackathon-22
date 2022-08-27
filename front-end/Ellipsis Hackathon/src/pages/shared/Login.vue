@@ -1,49 +1,28 @@
-<script setup>
-    export default {
-        name: 'Login',
-        data() {
-            return {
-                input: {
-                    username: "",
-                    password: ""
-                }
-            }
-        },
-        methods: {
-            
-        }
-    }
-
+<script>
 </script>
 
 <template>
     <div>
         <router-link to="/edit-client">
-            <Button label="Login"/>
+            <Button label="Login"></Button>
         </router-link>
-    
 
         <div id="login">
-        <h1>Login</h1>
-            <div class="form-inputs">
+            <span class="p-float-label">
+                <InputText id="username" type="text" v-model="value2" />
                 <label for="username">Username</label>
-                <input type="text" id="username" name="username" v-model="input.username" placeholder="Username" />
-            </div>
-            <div class="form-inputs">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" v-model="input.password" placeholder="Password" />
-            </div>
-            <button type="button" v-on:click="login()">Login</button>
+            </span>
+
+            <InputText type="password" v-model="value1" />
+            <span :style="{marginLeft: '.5em'}">{{value1}}</span>
         </div>
+
+             
     </div>
+
+
 
 </template>
 
 <style scoped>
-    #login .form-inputs {
-    padding-bottom: 10px;
-    }
-    #login .form-inputs label {
-        padding-right: 10px;
-    }
 </style>
