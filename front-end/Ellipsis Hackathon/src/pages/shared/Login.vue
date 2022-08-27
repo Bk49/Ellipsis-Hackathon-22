@@ -1,5 +1,4 @@
 <script>
-
 </script>
 
 <template>
@@ -7,20 +6,26 @@
         <router-link to="/edit-client">
             <Button label="Login"></Button>
         </router-link>
-        <div>
-            <h5>Floating Label</h5>
-            <span class="p-float-label">
-            <InputText id="username" type="text" v-model="value2" />
-            <label for="username">Username</label>
-            </span>
-        </div>
-    </div>
 
+        <div id="login">
+            <h1>Login</h1>
+            <div class="form-inputs">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" v-model="input.username" placeholder="Username" />
+            </div>
+            <div class="form-inputs">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" v-model="input.password" placeholder="Password" />
+            </div>
+            <button type="button" v-on:click="login()">Login</button>
+        </div>
+
+             
+    </div>
 
 
 
 </template>
 
 <style scoped>
-   
 </style>
