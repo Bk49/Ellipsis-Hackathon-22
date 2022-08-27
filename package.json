@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/Bk49/Ellipsis-Hackathon-22/issues"
   },
-  "homepage": "https://github.com/Bk49/Ellipsis-Hackathon-22#readme"
+  "homepage": "https://github.com/Bk49/Ellipsis-Hackathon-22#readme",
+  "dependencies": {
+    "primevue": "^3.16.2",
+    "vue-router": "^4.1.5"
+  }
 }

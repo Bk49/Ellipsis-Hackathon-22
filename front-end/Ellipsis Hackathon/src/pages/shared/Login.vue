@@ -1,4 +1,4 @@
-<script setup>
+<script>
     export default {
         name: 'Login',
         data() {
@@ -8,9 +8,6 @@
                     password: ""
                 }
             }
-        },
-        methods: {
-            
         }
     }
 
