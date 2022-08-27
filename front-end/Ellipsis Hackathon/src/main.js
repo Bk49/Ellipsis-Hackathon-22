@@ -12,6 +12,7 @@ import ColumnGroup from 'primevue/columngroup';
 import Row from 'primevue/row';  
 
 import './assets/main.css'
+import VueNavigationBar from "vue-navigation-bar";
 
 const app = createApp(App)
 app.use(Router)
@@ -22,6 +23,8 @@ app.component('PVCard', Card)
 app.component('InputText', InputText)
 app.component('DataTable', DataTable)
 app.component('Column', Column)
+app.component('ColumnGroup', ColumnGroup)
+app.component('Row', Row)
 
 app.mount('#app')
 
