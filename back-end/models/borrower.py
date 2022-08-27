@@ -44,22 +44,22 @@ class BorrowerResource(Resource):
         borrower_id = request.json["id"]
         loan_repayment_status = request.json["loan_repayment_status"]
 
-        borrower = Borrower.query.filter_by(id=borrower_id).first()
-        if not borrower:
+        current_borrower = Borrower.query.filter_by(id=borrower_id).first()
+        if not current_borrower:
             return Response("Invalid borrower ID", 404)
 
 
-        borrower.loan_repayment_status = loan_repayment_status
-        db.session.merge(borrower)
+        current_borrower.loan_repayment_status = loan_repayment_status
+        db.session.merge(current_borrower)
         db.session.commit()
         return Response("Success", 200)
 
     def delete(self):
         borrower_id = request.json["id"]
-        borrower = Borrower.query.filter_by(id=borrower_id).first()
-        if not borrower:
+        current_borrower = Borrower.query.filter_by(id=borrower_id).first()
+        if not current_borrower:
             return Response("Invalid borrower ID", 404)
 
-        db.session.delete(borrower)
+        db.session.delete(current_borrower)
         db.session.commit()
         return Response("Success", 200)
