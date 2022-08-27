@@ -33,7 +33,10 @@ class FinanceRequestResource(Resource):
         financing_company = user.User.query.filter_by(id=financing_company_id).first()
 
         if not financing_company:
-            return Response("Invalid company ID", 404)
+            return {
+                "status_code": 404,
+                "message": "Invalid company ID"
+            }
 
         new_finance_request = FinanceRequest(financing_company_id=financing_company_id,
                                             request_amount=request_amount,
@@ -44,15 +47,24 @@ class FinanceRequestResource(Resource):
         db.session.add(new_finance_request)
         db.session.commit()
 
-        return Response("Success", 200)
+        return {
+                "status_code": 200,
+                "message": "Success"
+            }
 
     def get(self, financing_company_id):
         financing_company = user.User.query.filter_by(id=financing_company_id)
         if not financing_company:
-            return Response("Invalid company ID", 404)
+            return {
+                "status_code": 404,
+                "message": "Invalid company ID"
+            }
 
         finance_requests = FinanceRequest.query.filter_by(financing_company_id=financing_company_id).all()
-        return [finance_request.to_json() for finance_request in finance_requests]
+        return {
+                "status_code": 200,
+                "finance_requests": [finance_request.to_json() for finance_request in finance_requests]
+            }
 
     def put(self, financing_company_id):
         finance_request_id = request.json["finance_request_id"]
@@ -61,32 +73,50 @@ class FinanceRequestResource(Resource):
 
         financing_company = user.User.query.filter_by(id=financing_company_id).first()
         if not financing_company:
-            return Response("Invalid company ID", 404)
+            return {
+                "status_code": 404,
+                "message": "Invalid company ID"
+            }
 
         finance_request = FinanceRequest.query.filter_by(id=finance_request_id).first()
         if not finance_request:
-            return Response("Invalid finance request ID", 404)
+            return {
+                "status_code": 404,
+                "message": "Invalid finance request ID"
+            }
 
         finance_request.status = status
         finance_request.paid_amount = paid_amount
         db.session.merge(finance_request)
         db.session.commit()
-        return Response("Success", 200)
+        return {
+                "status_code": 200,
+                "message": "Success"
+            }
 
     def delete(self, financing_company_id):
         finance_request_id = request.json["finance_request_id"]
 
         financing_company = user.User.query.filter_by(id=financing_company_id).first()
         if not financing_company:
-            return Response("Invalid company ID", 404)
+            return {
+                "status_code": 404,
+                "message": "Invalid company ID"
+            }
 
         finance_request = FinanceRequest.query.filter_by(id=finance_request_id).first()
         if not finance_request:
-            return Response("Invalid finance request ID", 404)
+            return {
+                "status_code": 404,
+                "message": "Invalid finance request ID"
+            }
 
         db.session.delete(finance_request)
         db.session.commit()
-        return Response("Success", 200)
+        return {
+                "status_code": 200,
+                "message": "Success"
+            }
 
 
 class FinanceRequestIDListResource(Resource):
@@ -97,7 +127,10 @@ class FinanceRequestIDListResource(Resource):
         for id in finance_request_id_list:
             finance_requests.append(FinanceRequest.query.filter_by(id=id).first())
 
-        return [finance_request.to_json() for finance_request in finance_requests]
+        return {
+                "status_code": 200,
+                "finance_requests": [finance_request.to_json() for finance_request in finance_requests]
+            }
 
     def delete(self):
         finance_request_id_list = request.json["id_list"]
@@ -107,10 +140,16 @@ class FinanceRequestIDListResource(Resource):
             finance_request = FinanceRequest.query.filter_by(id=id).first()
             db.session.delete(finance_request)
             db.session.commit()
-        return Response("Success", 200)
+        return {
+                "status_code": 200,
+                "message": "Success"
+            }
 
 
 class FinanceRequestListResource(Resource):
     def get(self):
         finance_requests = FinanceRequest.query.all()
-        return [finance_request.to_json() for finance_request in finance_requests]
+        return {
+                "status_code": 200,
+                "finance_requests": [finance_request.to_json() for finance_request in finance_requests]
+            }

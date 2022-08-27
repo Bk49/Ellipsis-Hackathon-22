@@ -36,7 +36,10 @@ class LoanRequestResource(Resource):
         current_borrower = borrower.Borrower.query.filter_by(id=borrower_id).first()
 
         if not current_borrower:
-            return Response("Invalid borrower ID", 404)
+            return {
+                "status_code": 404,
+                "message": "Invalid borrower ID"
+            }
 
         new_loan_request = LoanRequest(borrower_id=borrower_id,
                                        request_amount=request_amount,
@@ -48,15 +51,24 @@ class LoanRequestResource(Resource):
         db.session.add(new_loan_request)
         db.session.commit()
 
-        return Response("Success", 200)
+        return {
+                "status_code": 200,
+                "message": "Success"
+            }
 
     def get(self, borrower_id):
         current_borrower = borrower.Borrower.query.filter_by(id=borrower_id)
         if not current_borrower:
-            return Response("Invalid borrower ID", 404)
+            return {
+                "status_code": 404,
+                "message": "Invalid borrower ID"
+            }
 
         loan_requests = LoanRequest.query.filter_by(borrower_id=borrower_id).all()
-        return [loan_request.to_json() for loan_request in loan_requests]
+        return {
+                "status_code": 200,
+                "loan_requests": [loan_request.to_json() for loan_request in loan_requests]
+            }
 
     def put(self, borrower_id):
         loan_request_id = request.json["loan_request_id"]
@@ -65,32 +77,50 @@ class LoanRequestResource(Resource):
 
         current_borrower = user.User.query.filter_by(id=borrower_id).first()
         if not current_borrower:
-            return Response("Invalid borrower ID", 404)
+            return {
+                "status_code": 404,
+                "message": "Invalid borrower ID"
+            }
 
         loan_request = LoanRequest.query.filter_by(id=loan_request_id).first()
         if not loan_request:
-            return Response("Invalid loan request ID", 404)
+            return {
+                "status_code": 404,
+                "message": "Invalid loan request ID"
+            }
 
         loan_request.status = status
         loan_request.paid_amount = paid_amount
         db.session.merge(loan_request)
         db.session.commit()
-        return Response("Success", 200)
+        return {
+                "status_code": 200,
+                "message": "Success"
+            }
 
     def delete(self, borrower_id):
         loan_request_id = request.json["loan_request_id"]
 
         current_borrower = borrower.Borrower.query.filter_by(id=borrower_id).first()
         if not borrower:
-            return Response("Invalid borrower ID", 404)
+            return {
+                "status_code": 404,
+                "message": "Invalid borrower ID"
+            }
 
         loan_request = LoanRequest.query.filter_by(id=loan_request_id).first()
         if not loan_request:
-            return Response("Invalid loan request ID", 404)
+            return {
+                "status_code": 404,
+                "message": "Invalid loan request ID"
+            }
 
         db.session.delete(loan_request)
         db.session.commit()
-        return Response("Success", 200)
+        return {
+                "status_code": 200,
+                "message": "Success"
+            }
 
 
 class LoanRequestIDListResource(Resource):
@@ -101,7 +131,10 @@ class LoanRequestIDListResource(Resource):
         for id in loan_request_id_list:
             loan_requests.append(LoanRequest.query.filter_by(id=id).first())
 
-        return [loan_request.to_json() for loan_request in loan_requests]
+        return {
+                "status_code": 200,
+                "loan_requests": [loan_request.to_json() for loan_request in loan_requests]
+            }
 
     def delete(self):
         loan_request_id_list = request.json["id_list"]
@@ -111,10 +144,16 @@ class LoanRequestIDListResource(Resource):
             loan_request = LoanRequest.query.filter_by(id=id).first()
             db.session.delete(loan_request)
             db.session.commit()
-        return Response("Success", 200)
+        return {
+                "status_code": 200,
+                "message": "Success"
+            }
 
 
 class LoanRequestListResource(Resource):
     def get(self):
         loan_requests = LoanRequest.query.all()
-        return [loan_request.to_json() for loan_request in loan_requests]
+        return {
+                "status_code": 200,
+                "loan_requests": [loan_request.to_json() for loan_request in loan_requests]
+            }
