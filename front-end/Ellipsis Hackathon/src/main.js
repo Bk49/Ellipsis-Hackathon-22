@@ -8,6 +8,7 @@ import Card from 'primevue/card';
 import InputText from 'primevue/inputtext'
 
 import './assets/main.css'
+import VueNavigationBar from "vue-navigation-bar";
 
 const app = createApp(App)
 app.use(Router)
@@ -16,6 +17,7 @@ app.use(PrimeVue)
 app.component('Button', Button)
 app.component('PVCard', Card)
 app.component('InputText', InputText)
+app.component("vue-navigation-bar", VueNavigationBar);
 
 app.mount('#app')
 
