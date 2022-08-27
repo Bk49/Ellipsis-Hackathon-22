@@ -6,11 +6,11 @@ const routes = [
     { path: "/", component: Login },
     { path: "/edit-client", component: CreateUpdateClient },
     { path: "/list-client", component: ListClient },
-    { path: "/edit-client", component: ListFinancingReq },
-    { path: "/edit-client", component: ViewFinancingReq },
-    { path: "EDIT", component: CreateUpdateFinancingReq },
-    { path: "EDIT", component: ListFinancingReq },
-    { path: "EDIT", component: ViewGSTools },
+    { path: "/admin-overview-financing-request", component: AdminListFinancingReq },
+    { path: "/view-financing-request", component: ViewFinancingReq },
+    { path: "/create-financiang-request", component: CreateUpdateFinancingReq },
+    { path: "/client-overview-financing-req", component: ClientListFinancingReq },
+    { path: "/view-tools", component: ViewGSTools },
 ];
 
 const router = createRouter({
