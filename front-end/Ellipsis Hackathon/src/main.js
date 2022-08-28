@@ -10,9 +10,10 @@ import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
 import ColumnGroup from 'primevue/columngroup';
 import Row from 'primevue/row';  
+import Menubar from 'primevue/menubar';
 
 import './assets/main.css'
-import VueNavigationBar from "vue-navigation-bar";
+
 
 const app = createApp(App)
 app.use(Router)
