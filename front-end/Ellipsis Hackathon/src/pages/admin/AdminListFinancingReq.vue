@@ -17,6 +17,7 @@ export default {
         { header: "Amount Requested", field: "request_amount" },
         { header: "Debt Collection/Returned", field: "paid_amount" },
         { header: "Status of Loan", field: "status" },
+        //{ header: "Client Name", field: "username"}
       ],
     };
   },
