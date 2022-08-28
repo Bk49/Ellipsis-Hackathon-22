@@ -3,9 +3,7 @@
     <Menubar :model="items">
     <template #item="{item}">
         <router-link :to="item.to" custom v-slot="{href, route, navigate, isActive, isExactActive}">
-            <a :href="href" @click="navigate" :class="{'active-link': isActive, 'active-link-exact': isExactActive}">{{route.fullPath}}
-				item.labels
-			</a>
+            <a :href="href" @click="navigate" :class="{'active-link': isActive, 'active-link-exact': isExactActive}">{{item.label}}    </a>
         </router-link>
     </template>
     </Menubar>
@@ -19,12 +17,13 @@ export default {
       items: [
         {
           name: "Financing Request List - Admin",
-          label: "Financing Request List - Admin",
+          label: "Financing Request List - Admin		",
           to: "/admin-overview-financing-request",
+		
         },
         {
           name: "Client List",
-          label: "Client List",
+          label: "Client List		",
           to: "/list-client",
         },
         {
@@ -42,3 +41,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+	.p-menubar {
+		flex: auto;
+	}
+</style>
