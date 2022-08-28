@@ -1,11 +1,22 @@
 <template>
   <div>
     <Menubar :model="items">
-    <template #item="{item}">
-        <router-link :to="item.to" custom v-slot="{href, route, navigate, isActive, isExactActive}">
-            <a :href="href" @click="navigate" :class="{'active-link': isActive, 'active-link-exact': isExactActive}">{{item.label}}    </a>
+      <template #start>
+        <img
+          alt="logo"
+          src="https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png"
+          height="40"
+          class="mr-2"
+        />
+      </template>
+	  <template>
+		<router-link :to="item.to" custom v-slot="{href, route, navigate, isActive, isExactActive}">
+            <a :href="href" @click="navigate" :class="{'active-link': isActive, 'active-link-exact': isExactActive}">{{item.label}}</a>
         </router-link>
-    </template>
+	  </template>
+	  <template #end>
+	  <p>YOZA DA BEST</p>
+	  </template>
     </Menubar>
   </div>
 </template>
@@ -16,34 +27,27 @@ export default {
     return {
       items: [
         {
-          name: "Financing Request List - Admin",
-          label: "Financing Request List - Admin		",
-          to: "/admin-overview-financing-request",
-		
+          label: "Financing Request List - Admin",
+          icon: "pi pi-fw pi-file",
+		  to: "/admin-overview-financing-request",
         },
         {
-          name: "Client List",
-          label: "Client List		",
-          to: "/list-client",
+          label: "Client List",
+          icon: "pi pi-fw pi-pencil",
+		  to: "/list-client",
         },
         {
-          name: "Financing Request List - Client",
           label: "Financing Request List - Client",
-          to: "/client-overview-financing-request",
+          icon: "pi pi-fw pi-user",
+		  to: "/client-overview-financing-request",
         },
         {
-          name: "Update Financing Request",
           label: "Update Financing Request",
-          to: "/view-financing-request",
+          icon: "pi pi-fw pi-user",
+		  to: "/create-financing-request",
         },
       ],
     };
   },
 };
 </script>
-
-<style scoped>
-	.p-menubar {
-		flex: auto;
-	}
-</style>
