@@ -35,21 +35,21 @@ export default {
   <div>
     <form>
       <div>
-      <InputNumber
-        id="request_amount"
-        v-model="request_amount"
-        type="number"
-        placeholder="Request Amount"
-      />
+        <InputText
+          id="request_amount"
+          v-model="request_amount"
+          type="number"
+          placeholder="Request Amount"
+        />
       </div>
-      <InputNumber
+      <InputText
         id="interest_rate"
         v-model="interest_rate"
         type="number"
         placeholder="Interest Rate"
       />
       <div>
-      <Button v-on:click="sendRequest()">Submit</Button>
+        <Button v-on:click="sendRequest()">Submit</Button>
       </div>
     </form>
   </div>
