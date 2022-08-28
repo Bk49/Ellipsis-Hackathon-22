@@ -24,6 +24,10 @@ export default {
                                 ? "/admin-overview-financing-request"
                                 : "/client-overview-financing-req"
                         }`
+                        `${
+                            response.role === "client"
+                                ? "/client-overview-financing-request"
+                                : "/create-financing-request"
                     );
                 } else {
                     alert("The user details are not valid");
