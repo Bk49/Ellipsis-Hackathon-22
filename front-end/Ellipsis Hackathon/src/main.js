@@ -11,6 +11,8 @@ import Column from 'primevue/column';
 import ColumnGroup from 'primevue/columngroup';
 import Row from 'primevue/row';  
 import Menubar from 'primevue/menubar';
+import InputNumber from 'primevue/inputnumber'
+
 
 import './assets/main.css'
 
@@ -22,6 +24,7 @@ app.use(PrimeVue)
 app.component('Button', Button)
 app.component('Card', Card)
 app.component('InputText', InputText)
+app.component('InputNumber', InputNumber)
 app.component('DataTable', DataTable)
 app.component('Column', Column)
 app.component('ColumnGroup', ColumnGroup)
