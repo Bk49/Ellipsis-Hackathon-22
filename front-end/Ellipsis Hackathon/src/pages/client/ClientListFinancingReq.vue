@@ -4,7 +4,6 @@
 
 <script>
 import BaseTable from "../../components/table/BaseTable.vue";
-
 export default {
   //   props: {
 

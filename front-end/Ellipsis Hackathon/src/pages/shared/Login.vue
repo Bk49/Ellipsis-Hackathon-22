@@ -17,6 +17,7 @@ export default {
                 ).then((res) => res.json());
 
                 if (response.role) {
+                    localStorage.setItem("role", response.role)
                     this.$router.push(
                         `${
                             response.role === "admin"
