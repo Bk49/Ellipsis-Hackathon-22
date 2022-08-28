@@ -1,7 +1,9 @@
 <script >
 export default {
-    props: {
-        paramNo: Number,
+    data() {
+        return {
+            id: this.$route.params.id,
+        };
     },
 
     methods: {
@@ -14,12 +16,9 @@ export default {
                         username: this.username,
                         password: this.password,
                     }),
-                    query: {
-                        financing_company_id: paramNo,
-                    },
                 };
                 const response = await fetch(
-                    "http://127.0.0.1:5001/finance_request/",
+                    "http://127.0.0.1:5001/user",
                     requestOptions
                 ).then((res) => res.json());
 
@@ -46,20 +45,20 @@ export default {
                     <div class="col-12 md:col-4">
                         <div class="p-inputgroup">
                             <InputText
-                                placeholder="Request Amount"
-                                name="request_amount"
+                                placeholder="Client Username"
+                                name="username"
                                 type="number"
-                                v-model="request_amount"
+                                v-model="username"
                             />
                         </div>
                     </div>
                     <div class="col-12 md:col-4">
                         <div class="p-inputgroup">
                             <InputText
-                                placeholder="Interest Rate"
-                                name="interest_rate"
+                                placeholder="Password"
+                                name="password"
                                 type="text"
-                                v-model="interest_rate"
+                                v-model="password"
                             />
                         </div>
                     </div>

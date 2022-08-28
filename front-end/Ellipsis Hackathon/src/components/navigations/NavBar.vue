@@ -40,13 +40,13 @@ export default {
               {
                 label: "Financing Request List - Client",
                 icon: "pi pi-fw pi-user",
-                to: "/client-overview-financing-request",
+                to: `/client-overview-financing-request/${this.$route.params.id ? this.$route.params.id : this.$route.params.user_id}`,
                 type: "client",
               },
               {
-                label: "Update Financing Request",
+                label: "Create Financing Request",
                 icon: "pi pi-fw pi-user",
-                to: "/create-financing-request",
+                to: `/create-financing-request/${this.$route.params.id ? this.$route.params.id : this.$route.params.user_id}`,
                 type: "client",
               },
             ]
