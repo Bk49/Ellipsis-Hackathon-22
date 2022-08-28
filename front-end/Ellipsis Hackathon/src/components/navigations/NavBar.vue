@@ -1,11 +1,16 @@
 <template>
   <div>
-        <Menubar :model="items">
-            <template #start>
-                <img alt="logo" src="https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png" height="40" class="mr-2">
-            </template>
-        </Menubar>
-    </div>
+    <Menubar :model="items">
+      <template #start>
+        <img
+          alt="logo"
+          src="https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png"
+          height="40"
+          class="mr-2"
+        />
+      </template>
+    </Menubar>
+  </div>
 </template>
 
 <script>
