@@ -14,6 +14,7 @@
 
 <script>
 const role = localStorage.getItem("role");
+console.log(role)
 
 export default {
   data() {

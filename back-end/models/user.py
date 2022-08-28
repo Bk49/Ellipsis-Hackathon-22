@@ -98,7 +98,8 @@ class UserAuthenticate(Resource):
         if bcrypt.check_password_hash(retrieved_user.password, password):
             return {
                 "status_code": 200,
-                "role": retrieved_user.role
+                "role": retrieved_user.role,
+                "id": retrieved_user.id
             }
         return {
                 "status_code": 401,
