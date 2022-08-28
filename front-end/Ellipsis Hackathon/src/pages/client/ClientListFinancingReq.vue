@@ -39,7 +39,7 @@ export default {
 
 <template>
   <div>
-    <h1>Overview of all Financing Request (Admin)</h1>
+    <h1>Overview of all Financing Request (Client)</h1>
     <BaseTable
       tableName="Financing Requests (Admin)"
       :tableHeader="tableHeader"
