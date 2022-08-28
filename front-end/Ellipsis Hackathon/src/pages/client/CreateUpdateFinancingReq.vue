@@ -1,4 +1,6 @@
 <script>
+import BaseForm from "../../components/form/BaseForm.vue";
+
 export default {
         methods: {
             async sendRequest() {
@@ -20,6 +22,9 @@ export default {
                     console.log(error);
                 }
             }
+        },
+        components: {
+            BaseForm,
         }
     }
 </script>
