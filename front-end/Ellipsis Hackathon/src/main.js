@@ -10,6 +10,7 @@ import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
 import ColumnGroup from 'primevue/columngroup';
 import Row from 'primevue/row';  
+import InputNumber from 'primevue/inputnumber'
 
 import './assets/main.css'
 import VueNavigationBar from "vue-navigation-bar";
@@ -21,6 +22,7 @@ app.use(PrimeVue)
 app.component('Button', Button)
 app.component('Card', Card)
 app.component('InputText', InputText)
+app.component('InputNumber', InputNumber)
 app.component('DataTable', DataTable)
 app.component('Column', Column)
 app.component('ColumnGroup', ColumnGroup)
