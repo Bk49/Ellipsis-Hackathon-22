@@ -18,7 +18,7 @@ const routes = [
     { path: "/admin-overview-financing-request", component: AdminListFinancingReq },
     { path: "/view-financing-request", component: ViewFinancingReq },
     { path: "/create-financing-request", component: CreateUpdateFinancingReq },
-    { path: "/client-overview-financing-req", component: ClientListFinancingReq },
+    { path: "/client-overview-financing-request", component: ClientListFinancingReq },
     { path: "/view-tools", component: ViewGSTools },
     { path: "/nav-bar", component: NavBar },
 ];

@@ -21,7 +21,7 @@ export default {
     };
   },
   mounted() {
-    fetch("http://127.0.0.1:5001/finance_request/2", {
+    fetch("http://127.0.0.1:5001/finance_request_list", {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     })
