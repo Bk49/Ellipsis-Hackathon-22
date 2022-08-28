@@ -28,6 +28,7 @@ export default {
                             response.role === "client"
                                 ? "/client-overview-financing-request"
                                 : "/create-financing-request"
+                        }
                     );
                 } else {
                     alert("The user details are not valid");
