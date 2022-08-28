@@ -13,7 +13,7 @@ import NavBar from "./components/navigations/NavBar.vue";
 
 const routes = [
     { path: "/", component: Login },
-    { path: "/edit-client", component: CreateUpdateClient },
+    { path: "/edit-client/:id?", component: CreateUpdateClient },
     { path: "/list-client", component: ListClient },
     { path: "/admin-overview-financing-request", component: AdminListFinancingReq },
     { path: "/view-financing-request", component: ViewFinancingReq },
