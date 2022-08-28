@@ -1,51 +1,73 @@
 <script>
-</script>
-
-
-<script>
-import BaseTable from "../../components/table/BaseTable.vue";
-
 export default {
-  //   props: {
-
-  //   },
-  data() {
-    return {
-      finance_requests: [],
-      tableHeader: [
-        { header: "Interest Rate", field: "interest_rate" },
-        { header: "Amount Requested", field: "request_amount" },
-        { header: "Debt Collection/Returned", field: "paid_amount" },
-        { header: "Status of Loan", field: "status" },
-      ],
-    };
-  },
-  mounted() {
-    fetch("http://127.0.0.1:5001/finance_request/2", {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-    })
-      .then(async (res) => {
-        const { finance_requests } = await res.json(); // const finance_request = await res.json().finance_request
-        this.finance_requests = finance_requests;
-      })
-      .catch((err) => console.log(err));
-  },
-  components: {
-    BaseTable,
-  },
+    data() {
+        return {
+            users: [],
+        };
+    },
+    mounted() {
+        fetch("http://127.0.0.1:5001/user", {
+            method: "GET",
+            headers: { "Content-Type": "application/json" },
+        })
+            .then(async (res) => {
+                const { users } = await res.json(); // const finance_request = await res.json().finance_request
+                this.users = users;
+                console.log(users)
+            })
+            .catch((err) => console.log(err));
+    },
+    methods: {
+        linkToUpdate(id) {
+            return this.$router.push(`/edit-client/${id}`);
+        },
+        async deleteUser(id) {
+            try {
+                const requestOptions = {
+                    method: "DELETE",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ id: id }),
+                };
+                const res = await fetch(
+                    "http://127.0.0.1:5001/user",
+                    requestOptions
+                ).then((res) => res.json());
+                if (res) alert("Successfully deleted user");
+                this.$router.link("/list-client");
+            } catch (err) {
+                alert("Unable to perform delete!");
+            }
+        },
+    },
 };
 </script>
 
 <template>
-  <div>
-    <h1>Overview of all Financing Request (Admin)</h1>
-    <BaseTable
-      tableName="Financing Requests (Admin)"
-      :tableHeader="tableHeader"
-      :tableData="finance_requests"
-    />
-  </div>
+    <div>
+        <h1>Overview of all Financing Request (Admin)</h1>
+        <div class="center">
+            <div class="content-section implementation">
+                <div class="card">
+                    <DataTable :value="users">
+                        <Column header="Client Name" field="username" />
+                        <Column header="Action">
+                            <template #body="{ data }">
+                                <Button
+                                    label="Edit"
+                                    @click="linkToUpdate(data.id)"
+                                />
+                                <Button
+                                    class="p-button-danger"
+                                    label="Delete"
+                                    @click="deleteUser(data.id)"
+                                />
+                            </template>
+                        </Column>
+                    </DataTable>
+                </div>
+            </div>
+        </div>
+    </div>
 </template>
 
 <style scoped>

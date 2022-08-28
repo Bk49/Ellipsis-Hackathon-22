@@ -11,7 +11,7 @@ CORS(app)
 bcrypt = Bcrypt(app)
 
 DB_USER = "root"
-DB_PASSWORD = ""
+DB_PASSWORD = "Devious1211"
 DB_ENDPOINT = "127.0.0.1"
 DB_NAME = "financing"
 SECRET_KEY = "secret_key"
