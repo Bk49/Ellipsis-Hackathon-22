@@ -19,12 +19,13 @@ app.use(Router)
 app.use(PrimeVue)
 
 app.component('Button', Button)
-app.component('PVCard', Card)
+app.component('Card', Card)
 app.component('InputText', InputText)
 app.component('DataTable', DataTable)
 app.component('Column', Column)
 app.component('ColumnGroup', ColumnGroup)
 app.component('Row', Row)
+
 
 app.mount('#app')
 
