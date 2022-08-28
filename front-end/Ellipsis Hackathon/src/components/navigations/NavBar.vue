@@ -1,5 +1,7 @@
 <template>
   <div>
+	<nav>
+	<router-link :to="{name: name}"></router-link>
     <Menubar :model="items">
       <template #start>
         <img
@@ -10,6 +12,7 @@
         />
       </template>
     </Menubar>
+	</nav>
   </div>
 </template>
 
@@ -19,25 +22,25 @@ export default {
 				return {
 					items: [
 						{
+							name: "Financing Request List - Admin",
 							label:'Financing Request List - Admin',
-							icon:'pi pi-fw pi-file',
+							path: "/admin-overview-financing-request",
 						},
 						{
+							name: "Client List",
 							label:'Client List',
-							icon:'pi pi-fw pi-pencil',
+							path: "/list-client",
 						},
 						{
+							name: "Financing Request List - Client",
 							label:'Financing Request List - Client',
-							icon:'pi pi-fw pi-user',
+							path: "/client-overview-financing-request",
 				        },
                         {
+							name: "Update Financing Request",
 							label:'Update Financing Request',
-							icon:'pi pi-fw pi-user',
+							path: "/view-financing-request",
 				        },
-                        {
-							label:'GS Tools',
-							icon:'pi pi-fw pi-user',
-				        }
                     ]
 			    }
 		    }
