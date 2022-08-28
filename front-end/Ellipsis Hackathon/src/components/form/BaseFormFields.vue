@@ -11,7 +11,7 @@ export default {
 <template>
     <div>
         <InputNumber
-            v-if="type === 'string'"
+            v-if="type === 'number'"
             :placeholder="placeholder"
             :minFractionDigits="minFractionDigits"
         />
