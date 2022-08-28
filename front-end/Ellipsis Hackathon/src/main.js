@@ -26,7 +26,7 @@ app.component('DataTable', DataTable)
 app.component('Column', Column)
 app.component('ColumnGroup', ColumnGroup)
 app.component('Row', Row)
-
+app.component('Menubar', Menubar)
 
 app.mount('#app')
 

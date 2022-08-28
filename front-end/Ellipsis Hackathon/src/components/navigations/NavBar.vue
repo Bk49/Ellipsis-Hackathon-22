@@ -1,51 +1,40 @@
 <template>
-  <header class="navbar">
-    <nav>
-      <div class="branding">
-        <img src="../assets/logo.png" alt="" />
-      </div>
-      <ul class="navigation">
-        <li>
-          <router-link to="/admin-overview-financing-request">
-            Overview Financing Request
-          </router-link>
-        </li>
-        <li>
-          <router-link to="/view-financing-request">
-            View Financing Request
-          </router-link>
-        </li>
-        <li><router-link to="/list-client"> View Client List </router-link></li>
-        <li><router-link to="/edit-client"> Edit Client List </router-link></li>
-      </ul>
-
-      <ul v-show="client" class="navigation">
-        <li>
-          <router-link to="/view-tools"> Goldman Sachs Tools </router-link>
-        </li>
-        <li>
-          <router-link to="/client-overview-financing-req">
-            View Financing Requests
-          </router-link>
-        </li>
-        <li>
-          <router-link to="/create-financing-request">
-            Create Financing Request
-          </router-link>
-        </li>
-      </ul>
-    </nav>
-  </header>
+  <div>
+        <Menubar :model="items">
+            <template #start>
+                <img alt="logo" src="https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png" height="40" class="mr-2">
+            </template>
+        </Menubar>
+    </div>
 </template>
 
-<style scoped>
-header {
-  position: absolute;
-  z-index: 99;
-}
-nav {
-  display: flex;
-  flex-direction: row;
-  padding: 12px 0;
-}
-</style>
+<script>
+export default {
+			data() {
+				return {
+					items: [
+						{
+							label:'Financing Request List - Admin',
+							icon:'pi pi-fw pi-file',
+						},
+						{
+							label:'Client List',
+							icon:'pi pi-fw pi-pencil',
+						},
+						{
+							label:'Financing Request List - Client',
+							icon:'pi pi-fw pi-user',
+				        },
+                        {
+							label:'Update Financing Request',
+							icon:'pi pi-fw pi-user',
+				        },
+                        {
+							label:'GS Tools',
+							icon:'pi pi-fw pi-user',
+				        }
+                    ]
+			    }
+		    }
+        }
+</script>
