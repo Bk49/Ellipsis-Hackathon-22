@@ -1,10 +1,4 @@
 <script>
-
-</script>
-
-
-<script>
-import BaseTable from "../../components/table/BaseTable.vue";
 export default {
     data() {
         return {
@@ -13,6 +7,7 @@ export default {
         };
     },
     mounted() {
+        console.log(this.client_id)
         fetch(`http://127.0.0.1:5001/finance_request/${this.client_id}`, {
             method: "GET",
             headers: { "Content-Type": "application/json" },

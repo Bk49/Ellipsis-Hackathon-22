@@ -22,13 +22,8 @@ export default {
                         `${
                             response.role === "admin"
                                 ? "/admin-overview-financing-request"
-                                : "/client-overview-financing-req"
+                                : `/client-overview-financing-request/${response.id}`
                         }`
-                        `${
-                            response.role === "client"
-                                ? "/client-overview-financing-request"
-                                : "/create-financing-request"
-                        }
                     );
                 } else {
                     alert("The user details are not valid");
